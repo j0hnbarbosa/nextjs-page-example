@@ -1,14 +1,7 @@
-import React from 'react';
+import React from 'react'
+import { Flex, SimpleGrid  } from '@chakra-ui/react'
 import _ from 'lodash';
-
-import {
-  Grid
-} from 'semantic-ui-react';
-
-import CardItem from '../../components/card-item';
-import {
-  Container
-} from './styles';
+import CardItem from '../../components/card-item'
 
 const path = "/assets";
 
@@ -25,25 +18,25 @@ const imgs = [
   `${path}/tenis10.webp`,
 ];
 
-
 const mockData = _.times(21, (index) => {
   const chooseImg = Math.floor(Math.random() * imgs.length);
 
   return (
-    <Grid.Column key={index}>
-      <CardItem img={imgs[chooseImg]} />
-    </Grid.Column>
+      <CardItem key={index} img={imgs[chooseImg]} />
   )
 });
 
+
 function Main() {
   return (
-    <Container>
-      <Grid container columns={3} divided stackable>
-        {mockData}
-      </Grid>
-    </Container>
-  );
+    <>
+      <Flex justify='center' direction={['column', 'column', 'row']}>
+        <SimpleGrid columns={[1, 2, 3]}>
+          {mockData}
+        </SimpleGrid>
+      </Flex>
+    </>
+  )
 }
 
-export default Main;
+export default Main
