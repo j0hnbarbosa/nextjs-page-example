@@ -1,31 +1,12 @@
 import React from 'react'
-import { Flex, SimpleGrid  } from '@chakra-ui/react'
+import { Flex, SimpleGrid } from '@chakra-ui/react'
 import _ from 'lodash';
 import CardItem from '../../components/card-item'
+import { images } from '../../mock-data';
 
-const path = "/assets";
-
-const imgs = [
-  `${path}/tenis1.webp`,
-  `${path}/tenis2.jpg`,
-  `${path}/tenis3.webp`,
-  `${path}/tenis4.webp`,
-  `${path}/tenis5.webp`,
-  `${path}/tenis6.webp`,
-  `${path}/tenis7.webp`,
-  `${path}/tenis8.webp`,
-  `${path}/tenis9.webp`,
-  `${path}/tenis10.webp`,
-];
-
-const mockData = _.times(21, (index) => {
-  const chooseImg = Math.floor(Math.random() * imgs.length);
-
-  return (
-      <CardItem key={index} img={imgs[chooseImg]} />
-  )
-});
-
+const mockData = _.map(images, (image) => (
+  <CardItem key={image.id} img={image.img} id={image.id} />
+));
 
 function Main() {
   return (
