@@ -1,11 +1,11 @@
 import React from 'react'
-import { Flex, SimpleGrid } from '@chakra-ui/react'
+import { Flex, SimpleGrid } from '@chakra-ui/react';
 import _ from 'lodash';
 import CardItem from '../../components/card-item'
-import { images } from '../../mock-data';
+import { images, ImageType } from '../../mock-data';
 
-const mockData = _.map(images, (image) => (
-  <CardItem key={image.id} img={image.img} id={image.id} />
+const mockData = _.map(images, (image: ImageType) => (
+  <CardItem key={image.id} img={image} />
 ));
 
 function Main() {

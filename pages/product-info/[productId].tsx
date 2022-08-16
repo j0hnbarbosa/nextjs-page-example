@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router'
-import Image from 'next/image';
+import { Flex } from '@chakra-ui/react';
 import React from 'react'
 import { images, ImageType } from '../../mock-data';
 import _ from 'lodash';
-import { Flex } from '@chakra-ui/react';
 import CardItem from '../../components/card-item';
 
 
@@ -18,14 +17,21 @@ const ProductInfo = () => {
   } = router.query as QueryType;
 
   console.log(router.query)
-  const image = _.find(images, (img) => img.id === productId) as ImageType;
-  console.log(image);
+  const resu = _.find(images, (img: ImageType) => img.id === productId);
+  
+  let image: ImageType = { src: '', id: ''};
+
+  if (resu) {
+    image = {...resu}
+  }
+  
 
   return (
     <div>
       ProductInfo
       <Flex justify='center'>
-        <CardItem img={image.img} id={image.id} />
+        {!image && (<div>Image Product Not found</div>) }
+        {<CardItem img={image} />}
       </Flex>
     </div>
 

@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import Router from 'next/router';
-import { Box, Button, Text, Flex } from '@chakra-ui/react'
+import { Box, Button, Text, Flex, Icon } from '@chakra-ui/react';
 import Image from 'next/image'
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { Icon } from '@chakra-ui/react'
+import { ImageType } from '../../mock-data';
 
 type PropsValues = {
-  img: string,
-  id: string,
+  img: ImageType,
 }
 
 const CardItem = (props: PropsValues) => {
@@ -15,8 +14,7 @@ const CardItem = (props: PropsValues) => {
   const [heart, setHeart] = useState(false);
 
   const {
-    img,
-    id,
+    img
   } = props;
 
   const handleHoverIn = () => {
@@ -32,7 +30,7 @@ const CardItem = (props: PropsValues) => {
   };
 
   const handleRedirect = () => {
-    Router.push(`/product-info/${id}`)
+    Router.push(`/product-info/${img.id}`)
   }
 
   return (
@@ -55,10 +53,10 @@ const CardItem = (props: PropsValues) => {
             width={300}
           >
             <Image
-              src={img}
+              src={img.src}
               width={298}
               height={280}
-              alt={img}
+              alt={img.src}
             />
 
             <Flex
